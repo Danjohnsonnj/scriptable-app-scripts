@@ -18,9 +18,11 @@ Script.complete()
  * @returns {Widget} A Widget instance
  */
 async function createWidget() {
+  // In the Edit Widget modal there is a "Parameter" field
+  // which can accept a string:
+  const widgetParameter = args.widgetParameter
   const timeOfDaySearchTerm = getTimeOfDaySearchTerms()
-  const imgSrc = await getImageSrc([...timeOfDaySearchTerm])
-
+  const imgSrc = await getImageSrc([widgetParameter, ...timeOfDaySearchTerm])
   const imgReq = new Request(imgSrc)
   const photo = await imgReq.loadImage()
   const w = new ListWidget()
